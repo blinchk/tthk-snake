@@ -14,8 +14,7 @@ namespace SnakeGame
 
 			Walls walls = new Walls(80, 25);
 			walls.Draw();
-
-			// Отрисовка точек			
+			
 			Point p = new Point(4, 5, '*');
 			Snake snake = new Snake(p, 4, Direction.RIGHT);
 			snake.Draw();
@@ -60,6 +59,9 @@ namespace SnakeGame
 			Console.SetCursorPosition(xOffset, yOffset++);
 			WriteText("============================", xOffset, yOffset++);
 			WriteText("И Г Р А    О К О Н Ч Е Н А", xOffset + 1, yOffset++);
+			yOffset++;
+			WriteText("Пытался: Nikolas Laus", xOffset + 2, yOffset++);
+			WriteText("Группа: TARpv19", xOffset + 1, yOffset++);
 			WriteText("============================", xOffset, yOffset++);
 		}
 
