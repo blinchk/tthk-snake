@@ -10,7 +10,7 @@ namespace SnakeGame
 	{
 		static void Main(string[] args)
 		{
-			Console.SetWindowSize(80, 25);
+			Console.SetWindowSize(80, 26);
 
 			Walls walls = new Walls(80, 25);
 			walls.Draw();
@@ -46,12 +46,12 @@ namespace SnakeGame
 					snake.HandleKey(key.Key);
 				}
 			}
-			WriteGameOver();
+			WriteGameOver(snake.score);
 			Console.ReadLine();
 		}
 
 
-		static void WriteGameOver()
+		static void WriteGameOver(int score)
 		{
 			int xOffset = 25;
 			int yOffset = 8;
@@ -62,6 +62,7 @@ namespace SnakeGame
 			yOffset++;
 			WriteText("Пытался: Nikolas Laus", xOffset + 2, yOffset++);
 			WriteText("Группа: TARpv19", xOffset + 1, yOffset++);
+			WriteText("Ваш конечный счёт: " + score, xOffset + 2, yOffset++);
 			WriteText("============================", xOffset, yOffset++);
 		}
 
