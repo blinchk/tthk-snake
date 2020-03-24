@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace SnakeGame
 {
@@ -47,7 +48,9 @@ namespace SnakeGame
 				}
 			}
 			WriteGameOver(snake.score);
-			Console.ReadLine();
+			ConsoleKeyInfo _key = Console.ReadKey();
+			if (_key.Key == ConsoleKey.Enter)
+				Application.Restart();
 		}
 
 
@@ -59,10 +62,14 @@ namespace SnakeGame
 			Console.SetCursorPosition(xOffset, yOffset++);
 			WriteText("============================", xOffset, yOffset++);
 			WriteText("И Г Р А    О К О Н Ч Е Н А", xOffset + 1, yOffset++);
+			WriteText("Для перезапуска нажмите Enter", xOffset, yOffset++);
 			yOffset++;
-			WriteText("Пытался: Nikolas Laus", xOffset + 2, yOffset++);
-			WriteText("Группа: TARpv19", xOffset + 1, yOffset++);
+			Console.ForegroundColor = ConsoleColor.Yellow;
+			WriteText("Пытался: Nikolas Laus", xOffset+2, yOffset++);
+			WriteText("Группа: TARpv19", xOffset + 2, yOffset++);
+			Console.ForegroundColor = ConsoleColor.White;
 			WriteText("Ваш конечный счёт: " + score, xOffset + 2, yOffset++);
+			Console.ForegroundColor = ConsoleColor.Red;
 			WriteText("============================", xOffset, yOffset++);
 		}
 

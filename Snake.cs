@@ -56,13 +56,13 @@ namespace SnakeGame
 
 		public void HandleKey(ConsoleKey key)
 		{
-			if (key == ConsoleKey.LeftArrow && direction != Direction.RIGHT)
+			if (key == ConsoleKey.LeftArrow && direction != Direction.RIGHT && direction != Direction.LEFT)
 				direction = Direction.LEFT;
-			else if (key == ConsoleKey.RightArrow && direction != Direction.LEFT)
+			else if (key == ConsoleKey.RightArrow && direction != Direction.LEFT && direction != Direction.RIGHT)
 				direction = Direction.RIGHT;
-			else if (key == ConsoleKey.DownArrow && direction != Direction.UP)
+			else if (key == ConsoleKey.DownArrow && direction != Direction.UP && direction != Direction.DOWN)
 				direction = Direction.DOWN;
-			else if (key == ConsoleKey.UpArrow && direction != Direction.DOWN)
+			else if (key == ConsoleKey.UpArrow && direction != Direction.DOWN && direction != Direction.UP)
 				direction = Direction.UP;
 		}
 
