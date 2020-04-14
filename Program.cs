@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+using System.Media;
 
 namespace SnakeGame
 {
@@ -12,6 +13,10 @@ namespace SnakeGame
 	{
 		static void Main(string[] args)
 		{
+			var myPlayer = new System.Media.SoundPlayer();
+			myPlayer.SoundLocation = @"C:\Users\Nikolas Laus\source\repos\blinchk\tthk-snake\snakeMusic.wav";
+			myPlayer.Play();
+
 			Console.Write("Input your name: ");
 			string name = Console.ReadLine();
 
