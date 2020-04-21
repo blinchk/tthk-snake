@@ -13,9 +13,13 @@ namespace SnakeGame
 	{
 		static void Main(string[] args)
 		{
-			var myPlayer = new System.Media.SoundPlayer();
-			myPlayer.SoundLocation = @"C:\Users\Nikolas Laus\source\repos\blinchk\tthk-snake\snakeMusic.wav";
-			myPlayer.Play();
+			Params settings = new Params();
+			Sounds sound = new Sounds(settings.GetResourceFolder());
+			sound.Play();
+
+			Sounds pointsound = new Sounds(settings.GetResourceFolder());
+
+			Sounds losesound = new Sounds(settings.GetResourceFolder());
 
 			Console.Write("Input your name: ");
 			string name = Console.ReadLine();
@@ -41,6 +45,7 @@ namespace SnakeGame
 				}
 				if (snake.Eat(food))
 				{
+					pointsound.Play("point");
 					food = foodCreator.CreateFood();
 					food.Draw();
 				}
@@ -57,6 +62,8 @@ namespace SnakeGame
 				}
 			}
 			WriteGameOver(name, snake.score);
+			sound.Stop("back");
+			pointsound.Play("lose");
 			ConsoleKeyInfo _key = Console.ReadKey();
 			if (_key.Key == ConsoleKey.Enter)
 				Application.Restart();
