@@ -18,11 +18,26 @@ namespace SnakeGame
 			sound.Play();
 
 			Sounds pointsound = new Sounds(settings.GetResourceFolder());
-
 			Sounds losesound = new Sounds(settings.GetResourceFolder());
 
-			Console.Write("Input your name: ");
-			string name = Console.ReadLine();
+			string name;
+
+			while (true)
+			{
+				Console.Write("Type your name: ");
+				name = Console.ReadLine();
+				if (name.Length < 3)
+				{
+					Console.Clear();
+					Console.WriteLine("Name will be longer than 3 symbols.");
+					continue;
+				}
+				else
+				{
+					Console.Clear();
+					break;
+				}
+			}
 
 			Console.SetWindowSize(80, 26);
 
@@ -91,7 +106,7 @@ namespace SnakeGame
 			Console.WriteLine(score);
 			using( var file = new StreamWriter("score.txt", true) )
 			{
-				file.WriteLine("Name: " + name + " | Score:" + score);
+				file.WriteLine("Name: " + name + " | Score: " + score);
 				file.Close();
 			}
 		}
