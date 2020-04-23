@@ -77,7 +77,7 @@ namespace SnakeGame
 				}
 			}
 			WriteGameOver(name, snake.score);
-			sound.Stop("back");
+			sound.Stop();
 			pointsound.Play("lose");
 			ConsoleKeyInfo _key = Console.ReadKey();
 			if (_key.Key == ConsoleKey.Enter)

@@ -31,6 +31,12 @@ namespace SnakeGame
             player.controls.play();
         }
 
+        public void Stop()
+        {
+            player.URL = pathToMedia + "back.mp3";
+            player.controls.stop();
+        }
+
         public void Stop(string songName)
         {
             player.URL = pathToMedia + songName + ".mp3";
