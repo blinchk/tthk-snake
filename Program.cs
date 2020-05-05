@@ -60,6 +60,8 @@ namespace SnakeGame
 				}
 			}
 
+			Score score = new Score(0);
+
 			if (soundSwitch == true)
 			{
 				sound.Play();
@@ -84,7 +86,7 @@ namespace SnakeGame
 				{
 					break;
 				}
-				if (snake.Eat(food))
+				if (snake.Eat(food, score))
 				{
 					if (soundSwitch == true)
 					{
@@ -97,7 +99,6 @@ namespace SnakeGame
 				{
 					snake.Move();
 				}
-
 				Thread.Sleep(100);
 				if (Console.KeyAvailable)
 				{
@@ -106,7 +107,7 @@ namespace SnakeGame
 				}
 			}
 			Messages gameover = new Messages();
-			gameover.WriteGameOver(name, snake.score);
+			gameover.WriteGameOver(name, score.score);
 			if (soundSwitch == true)
 			{
 				sound.Stop();

@@ -22,7 +22,6 @@ namespace SnakeGame
 				p.Move(i, direction);
 				pList.Add(p);
 			}
-			score = 0;
 		}
 
 		public void Move()
@@ -67,14 +66,14 @@ namespace SnakeGame
 				direction = Direction.UP;
 		}
 
-		public bool Eat(Point food)
+		public bool Eat(Point food, Score score)
 		{
 			Point head = GetNextPoint();
 			if (head.IsHit(food))
 			{
 				food.sym = head.sym;
 				pList.Add(food);
-				score++;
+				score = score.AddPoint(score);
 				return true;
 			}
 			else
