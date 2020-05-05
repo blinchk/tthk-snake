@@ -11,6 +11,7 @@ namespace SnakeGame
     {
 		public void WriteGameOver(string name, int score)
 		{
+			Console.Clear();
 			int xOffset = 25;
 			int yOffset = 8;
 			Console.ForegroundColor = ConsoleColor.Red;
@@ -27,7 +28,6 @@ namespace SnakeGame
 			WriteText("Ваш конечный счёт: " + score, xOffset + 2, yOffset++);
 			Console.ForegroundColor = ConsoleColor.Red;
 			WriteText("============================", xOffset, yOffset++);
-			Console.WriteLine(score);
 			using (var file = new StreamWriter("score.txt", true))
 			{
 				file.WriteLine("Name: " + name + " | Score: " + score);

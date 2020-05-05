@@ -30,7 +30,6 @@ namespace SnakeGame
 			pList.Remove(tail);
 			Point head = GetNextPoint();
 			pList.Add(head);
-
 			tail.Clear();
 			head.Draw();
 		}
@@ -72,12 +71,11 @@ namespace SnakeGame
 			if (head.IsHit(food))
 			{
 				food.sym = head.sym;
+				score.AddPoint(score);
 				pList.Add(food);
-				score = score.AddPoint(score);
 				return true;
 			}
-			else
-				return false;
+			else { return false; }
 		}
 	}
 }

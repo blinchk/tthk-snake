@@ -13,11 +13,28 @@ namespace SnakeGame
         public Score(int x)
         {
             score = x;
+            Console.SetCursorPosition(0, 25);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("Score: " + score);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public ConsoleColor RandomColor()
+        { 
+            Array values = Enum.GetValues(typeof(ConsoleColor));
+            Random random = new Random();
+            ConsoleColor randomColor = (ConsoleColor)values.GetValue(random.Next(1, values.Length));
+            return randomColor;
         }
 
         public Score AddPoint(Score score)
         {
             this.score++;
+            Console.SetCursorPosition(7, 25);
+            ConsoleColor color = RandomColor();
+            Console.ForegroundColor = color;
+            Console.Write(this.score);
+            Console.ForegroundColor = ConsoleColor.White;
             return score;
         }
     }

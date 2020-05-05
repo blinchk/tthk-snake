@@ -67,18 +67,22 @@ namespace SnakeGame
 				sound.Play();
 			}
 
-			Console.SetWindowSize(80, 26);
+			Console.SetWindowSize(80, 27);
 
 			Walls walls = new Walls(80, 25);
 			walls.Draw();
 			
 			Point p = new Point(4, 5, '*');
 			Snake snake = new Snake(p, 4, Direction.RIGHT);
+			Console.ForegroundColor = ConsoleColor.Red;
 			snake.Draw();
+			Console.ForegroundColor = ConsoleColor.White;
 
 			FoodCreator foodCreator = new FoodCreator(80, 25, '$');
 			Point food = foodCreator.CreateFood();
+			Console.ForegroundColor = ConsoleColor.Yellow;
 			food.Draw();
+			Console.ForegroundColor = ConsoleColor.White;
 
 			while (true)
 			{
@@ -93,11 +97,15 @@ namespace SnakeGame
 						pointsound.Play("point");
 					}
 					food = foodCreator.CreateFood();
+					Console.ForegroundColor = ConsoleColor.Yellow;
 					food.Draw();
+					Console.ForegroundColor = ConsoleColor.White;
 				}
 				else
 				{
+					Console.ForegroundColor = ConsoleColor.Red;
 					snake.Move();
+					Console.ForegroundColor = ConsoleColor.Yellow;
 				}
 				Thread.Sleep(100);
 				if (Console.KeyAvailable)
