@@ -10,7 +10,6 @@ namespace SnakeGame
 	class Snake : Figure
 	{
 		Direction direction;
-		public int score;
 
 		public Snake(Point tail, int length, Direction _direction)
 		{
@@ -65,13 +64,13 @@ namespace SnakeGame
 				direction = Direction.UP;
 		}
 
-		public bool Eat(Point food, Score score)
+		public bool Eat(Point food, Score score, Level level, Sounds sound)
 		{
 			Point head = GetNextPoint();
 			if (head.IsHit(food))
 			{
 				food.sym = head.sym;
-				score.AddPoint(score);
+				score.AddPoint(score, level, sound);
 				pList.Add(food);
 				return true;
 			}

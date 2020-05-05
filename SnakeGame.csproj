@@ -75,6 +75,7 @@
     <Compile Include="Figure.cs" />
     <Compile Include="FoodCreator.cs" />
     <Compile Include="HorizontalLine.cs" />
+    <Compile Include="Level.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="Params.cs" />
     <Compile Include="Point.cs" />

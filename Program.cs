@@ -13,11 +13,6 @@ namespace SnakeGame
 	{
 		static void Main(string[] args)
 		{
-			Params settings = new Params();
-			Sounds sound = new Sounds(settings.GetResourceFolder());
-			Sounds pointsound = new Sounds(settings.GetResourceFolder());
-			Sounds losesound = new Sounds(settings.GetResourceFolder());
-			
 			string name;
 
 			while (true)
@@ -45,29 +40,37 @@ namespace SnakeGame
 				ConsoleKeyInfo answerkey = Console.ReadKey();
 				if (answerkey.Key == ConsoleKey.Y)
 				{
+					Console.Clear();
 					soundSwitch = true;
 					break;
 				}
 				else if (answerkey.Key == ConsoleKey.N)
 				{
+					Console.Clear();
 					soundSwitch = false;
 					break;
 				}
 				else
 				{
-					Console.WriteLine("Press \'Y\' or \'N\' key.");
+					Console.WriteLine("\nPress \'Y\' or \'N\' key.");
 					continue;
 				}
 			}
 
-			Score score = new Score(0);
+			Score score = new Score(9);
+			Level level = new Level(1);
+			
+			Params settings = new Params();
+			Sounds sound = new Sounds(settings.GetResourceFolder());
+			Sounds pointsound = new Sounds(settings.GetResourceFolder());
+			Sounds losesound = new Sounds(settings.GetResourceFolder());
 
 			if (soundSwitch == true)
 			{
-				sound.Play();
+				sound.Play(level.level);
 			}
 
-			Console.SetWindowSize(80, 27);
+			Console.SetWindowSize(80, 26);
 
 			Walls walls = new Walls(80, 25);
 			walls.Draw();
@@ -90,7 +93,7 @@ namespace SnakeGame
 				{
 					break;
 				}
-				if (snake.Eat(food, score))
+				if (snake.Eat(food, score, level, sound))
 				{
 					if (soundSwitch == true)
 					{
@@ -107,7 +110,16 @@ namespace SnakeGame
 					snake.Move();
 					Console.ForegroundColor = ConsoleColor.Yellow;
 				}
-				Thread.Sleep(100);
+
+				if (level.level == 1)
+					Thread.Sleep(100);
+				else if (level.level == 2)
+					Thread.Sleep(75);
+				else if (level.level == 3)
+					Thread.Sleep(50);
+				else
+					Thread.Sleep(40);
+
 				if (Console.KeyAvailable)
 				{
 					ConsoleKeyInfo key = Console.ReadKey();
@@ -118,7 +130,7 @@ namespace SnakeGame
 			gameover.WriteGameOver(name, score.score);
 			if (soundSwitch == true)
 			{
-				sound.Stop();
+				sound.Stop(level.level);
 				pointsound.Play("lose");
 			}
 			ConsoleKeyInfo _key = Console.ReadKey();

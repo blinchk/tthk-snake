@@ -17,9 +17,9 @@ namespace SnakeGame
             pathToMedia = pathToResources;
         }
 
-        public void Play()
+        public void Play(int level)
         {
-            player.URL = pathToMedia + "back.mp3";
+            player.URL = pathToMedia + "back" + level + ".mp3";
             player.settings.volume = 30;
             player.controls.play();
             player.settings.setMode("loop", true);
@@ -31,9 +31,9 @@ namespace SnakeGame
             player.controls.play();
         }
 
-        public void Stop()
+        public void Stop(int level)
         {
-            player.URL = pathToMedia + "back.mp3";
+            player.URL = pathToMedia + "back" + level + ".mp3";
             player.controls.stop();
         }
 
