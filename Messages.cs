@@ -9,7 +9,7 @@ namespace SnakeGame
 {
     class Messages
     {
-		public void WriteGameOver(string name, int score)
+		public void WriteGameOver(string name, int score, int level)
 		{
 			Console.Clear();
 			int xOffset = 25;
@@ -26,6 +26,7 @@ namespace SnakeGame
 			Console.ForegroundColor = ConsoleColor.White;
 			WriteText(name + ", спасибо за игру!", xOffset++, yOffset++);
 			WriteText("Ваш конечный счёт: " + score, xOffset + 2, yOffset++);
+			WriteText("Вы закончили на уровне " + level, xOffset + 2, yOffset++);
 			Console.ForegroundColor = ConsoleColor.Red;
 			WriteText("============================", xOffset, yOffset++);
 			using (var file = new StreamWriter("score.txt", true))

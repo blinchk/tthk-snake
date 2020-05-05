@@ -63,7 +63,6 @@ namespace SnakeGame
 			Params settings = new Params();
 			Sounds sound = new Sounds(settings.GetResourceFolder());
 			Sounds pointsound = new Sounds(settings.GetResourceFolder());
-			Sounds losesound = new Sounds(settings.GetResourceFolder());
 
 			if (soundSwitch == true)
 			{
@@ -93,7 +92,7 @@ namespace SnakeGame
 				{
 					break;
 				}
-				if (snake.Eat(food, score, level, sound))
+				if (snake.Eat(food, score, level, sound, soundSwitch))
 				{
 					if (soundSwitch == true)
 					{
@@ -127,7 +126,7 @@ namespace SnakeGame
 				}
 			}
 			Messages gameover = new Messages();
-			gameover.WriteGameOver(name, score.score);
+			gameover.WriteGameOver(name, score.score, level.level);
 			if (soundSwitch == true)
 			{
 				sound.Stop(level.level);

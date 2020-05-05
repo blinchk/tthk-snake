@@ -30,19 +30,19 @@ namespace SnakeGame
 		{
 			if (direction == Direction.RIGHT)
 			{
-				x = x + offset;
+				x += offset;
 			}
 			else if (direction == Direction.LEFT)
 			{
-				x = x - offset;
+				x -= offset;
 			}
 			else if (direction == Direction.UP)
 			{
-				y = y - offset;
+				y -= offset;
 			}
 			else if (direction == Direction.DOWN)
 			{
-				y = y + offset;
+				y += offset;
 			}
 		}
 

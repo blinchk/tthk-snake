@@ -64,13 +64,13 @@ namespace SnakeGame
 				direction = Direction.UP;
 		}
 
-		public bool Eat(Point food, Score score, Level level, Sounds sound)
+		public bool Eat(Point food, Score score, Level level, Sounds sound, bool soundSwitch)
 		{
 			Point head = GetNextPoint();
 			if (head.IsHit(food))
 			{
 				food.sym = head.sym;
-				score.AddPoint(score, level, sound);
+				score.AddPoint(score, level, sound, soundSwitch);
 				pList.Add(food);
 				return true;
 			}

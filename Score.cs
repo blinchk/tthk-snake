@@ -27,14 +27,19 @@ namespace SnakeGame
             return randomColor;
         }
 
-        public Score AddPoint(Score score, Level level, Sounds sound)
+        public Score AddPoint(Score score, Level level, Sounds sound, bool soundSwitch)
         {
             this.score++;
             if (this.score == 10 || this.score == 20 || this.score == 30 || this.score == 40)
             {
-                sound.Stop(level.level);
-                level.AddLevel(level);
-                sound.Play(level.level);
+                if (soundSwitch == true)
+                {
+                    sound.Stop(level.level);
+                    level.AddLevel(level);
+                    sound.Play(level.level);
+                }
+                else
+                    level.AddLevel(level);
             }
             Console.SetCursorPosition(7, 25);
             ConsoleColor color = RandomColor();
